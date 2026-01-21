@@ -1,0 +1,95 @@
+services:
+  # Base service to share build context
+  base:
+    build: .
+    image: fed-weather-node:latest
+    volumes:
+      - .:/app
+    environment:
+      - STORAGE_ENDPOINT=${STORAGE_ENDPOINT:-minio.example.com}
+      - STORAGE_ACCESS_KEY=${STORAGE_ACCESS_KEY:-minioadmin}
+      - STORAGE_ACCESS_SECRET=${STORAGE_ACCESS_SECRET:-minioadmin}
+      - STORAGE_BUCKET_NAME=${STORAGE_BUCKET_NAME:-crisis-mmd}
+      - RESTCOL_HOST=${RESTCOL_HOST:-http://host.docker.internal:50091}
+      - RESTCOL_AUTH_TOKEN=${RESTCOL_AUTH_TOKEN}
+      - RESTCOL_PROJECT_ID=${RESTCOL_PROJECT_ID:-default}
+      - SESSION_ID=${SESSION_ID:-test_session_001}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  # 1. Data Preparation Service
+  # - Generates mock data
+  # - Partitions it
+  # - Extracts features (Custom CNN for Images, Tabular MLP for CSV data)
+  data-prep:
+    extends: base
+    command: >
+      bash -c "
+      echo '--- 0. Cleaning Old Data ---' &&
+      rm -rf fed_multimodal_restcol/preprocess/output/* &&
+      echo '--- 1. Generating Mock Data ---' &&
+      python3 generate_mock_data.py &&
+      cd fed_multimodal_restcol/preprocess &&
+      echo '--- 2. Partitioning Data ---' &&
+      python3 data_partition.py --raw_data_dir /app/data/airquality.csv --img_dir /app/data/raw_images --output_partition_path output &&
+      echo '--- 3. Extracting Image Features (Custom CNN) ---' &&
+      python3 extract_img_feature.py --output_dir output --feature_type custom_cnn --dataset custom_aqi &&
+      echo '--- 4. Extracting Text Features (Tabular MLP) ---' &&
+      python3 extract_text_feature.py --raw_data_dir /app/data/airquality.csv --output_dir output --feature_type tabular_mlp --dataset custom_aqi
+      "
+
+  # 2. Upload Service
+  # - Uploads the *extracted features* (from data-prep step) to MinIO
+  # - Uses the output path from extraction: output/feature/img/custom_cnn/custom_aqi/alpha50/
+  uploader:
+    extends: base
+    command: >
+      bash -c "python3 fed_multimodal_restcol/trainer/run/upload.py 
+      --pkls fed_multimodal_restcol/preprocess/output/feature/img/custom_cnn/custom_aqi/alpha50/dev.pkl 
+             fed_multimodal_restcol/preprocess/output/feature/img/custom_cnn/custom_aqi/alpha50/test.pkl 
+      --collection_id crisis-mmd 
+      --restcol_host ${RESTCOL_HOST:-http://host.docker.internal:50091} 
+      --restcol_authtoken '${RESTCOL_AUTH_TOKEN}'"
+
+  # 3. Federated Server
+  # - Uses 'custom_cnn' and 'tabular_mlp' to match the data
+  server:
+    extends: base
+    container_name: fl-server
+    restart: on-failure
+    command: >
+      python3 fed_multimodal_restcol/trainer/run/server.py 
+      --client_ids 0 
+      --session_id ${SESSION_ID:-test_session_001} 
+      --num_epochs 5 
+      --batch_size 4 
+      --img_feat custom_cnn 
+      --text_feat tabular_mlp 
+      --img_input_dims 128 
+      --text_input_dims 128 
+      --restcol_host ${RESTCOL_HOST:-http://host.docker.internal:50091} 
+      --restcol_authtoken '${RESTCOL_AUTH_TOKEN}'
+
+  # 4. Federated Client
+  # - Uses 'custom_cnn' and 'tabular_mlp'
+  client:
+    extends: base
+    container_name: fl-client
+    restart: on-failure
+    depends_on:
+      - server
+    command: >
+      bash -c "echo 'Waiting for server...' && sleep 5 && 
+      python3 fed_multimodal_restcol/trainer/run/client.py 
+      --client_id 0 
+      --session_id ${SESSION_ID:-test_session_001} 
+      --dataset_collection_id crisis-mmd 
+      --dataset_img_document_id ${IMG_DOC_ID} 
+      --dataset_text_document_id ${TEXT_DOC_ID} 
+      --batch_size 4 
+      --img_feat custom_cnn 
+      --text_feat tabular_mlp 
+      --img_input_dims 128 
+      --text_input_dims 128 
+      --restcol_host ${RESTCOL_HOST:-http://host.docker.internal:50091} 
+      --restcol_authtoken '${RESTCOL_AUTH_TOKEN}'"

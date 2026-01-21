@@ -1,0 +1,33 @@
+# Dependencies
+venv/
+node_modules/
+.env
+
+# Build Artifacts
+__pycache__/
+*.pyc
+*.so
+build/
+dist/
+*.egg-info/
+
+# Large Data & Outputs
+data/
+fed_multimodal_restcol/preprocess/output/
+mock_storage/
+*.pkl
+*.jpg
+*.png
+*.csv
+*.mp4
+*.wav
+*.json
+!package.json
+!tsconfig.json
+
+# Docker
+.docker/
+
+# System
+.DS_Store
+Thumbs.db
