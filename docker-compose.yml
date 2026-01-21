@@ -27,8 +27,8 @@ services:
       bash -c "
       echo '--- 0. Cleaning Old Data ---' &&
       rm -rf fed_multimodal_restcol/preprocess/output/* &&
-      echo '--- 1. Generating Mock Data ---' &&
-      python3 generate_mock_data.py &&
+      echo '--- 1. Generating Real Data from Dashboard ---' &&
+      python3 generate_real_dataset.py &&
       cd fed_multimodal_restcol/preprocess &&
       echo '--- 2. Partitioning Data ---' &&
       python3 data_partition.py --raw_data_dir /app/data/airquality.csv --img_dir /app/data/raw_images --output_partition_path output &&

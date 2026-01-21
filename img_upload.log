@@ -1,31 +1,37 @@
-Creating working_setup_uploader_run ... 
-Creating working_setup_uploader_run ... done
-args = Namespace(collection_id='crisis-mmd', restcol_host='https://saintgits01.footprint-ai.com/reststore', pkls=['fed_multimodal_restcol/preprocess/output/feature/img/custom_cnn/custom_aqi/alpha50/0.pkl', 'fed_multimodal_restcol/preprocess/output/feature/img/custom_cnn/custom_aqi/alpha50/dev.pkl', 'fed_multimodal_restcol/preprocess/output/feature/img/custom_cnn/custom_aqi/alpha50/test.pkl'], restcol_authtoken='eyJhbGciOiJSUzI1NiIsImtpZCI6ImM4MzExZmZmNWE3NjY5ZjRmOTNjMTMyODg3NmRkYTc3NjJmYTMyYjkifQ.eyJpc3MiOiJodHRwczovL2F1dGguc2FpbnRnaXRzMDEuZm9vdHByaW50LWFpLmNvbS9kZXgiLCJzdWIiOiJDaU5qYmoxa1pXMXZMRzkxUFZCbGIzQnNaU3hrWXoxbGVHRnRjR3hsTEdSalBXOXlaeElFYkdSaGNBIiwiYXVkIjoia2FmZWlkby1hcHAiLCJleHAiOjE3NjM2MTUzMjYsImlhdCI6MTc2MzUyODkyNiwiYXRfaGFzaCI6InB2Rmd5cEEtdHhiZzBLUVJ2eWh3WEEiLCJlbWFpbCI6ImRlbW9AZm9vdHByaW50LWFpLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJncm91cHMiOlsic3AxMCJdLCJuYW1lIjoiZGVtbyJ9.TgE5DE1Y8zUFgVXmX4vPiwH09Xl_RkAMPNtELm_Om1Jn_f3z5OWAfi7i4ELk3sMOFUEQ-ZvFkQR7N5IiQ9Q8zTydJYcMWYsmxirivbMPqEmNyYYLTjg-mbgqcYRgeLI40Tod90KEPu0X7F73Brrk_15EVovB1ZLuCXVdYoiaej0nJ2OmtxhLfXhzKzLIkbjEUTlkFp5yhaT02Xv4Ii1cy7_pPBCjm-DR986UFEBsvNxIX9187REVkNuw1vhpiBA4uOvHn9s0IcN4QGfmA2IScVy2HxAlwjuznF5avt5NUK-iDNBFLXg1kKViqw0-CgFkVU-jQbtryFnhhm2af_0ang', restcol_projectid='')
-config: <openapi_client.configuration.Configuration object at 0x71b3bd6fed40>
-project_id: 
-create collection: crisis-mmd
+time="2026-01-21T16:55:34+05:30" level=warning msg="The \"IMG_DOC_ID\" variable is not set. Defaulting to a blank string."
+time="2026-01-21T16:55:34+05:30" level=warning msg="The \"TEXT_DOC_ID\" variable is not set. Defaulting to a blank string."
+time="2026-01-21T16:55:34+05:30" level=warning msg="No services to build"
+time="2026-01-21T16:55:34+05:30" level=warning msg="No services to build"
+ Container working_setup-uploader-run-ecfab4f1c853 Creating 
+ Container working_setup-uploader-run-ecfab4f1c853 Created 
 /usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'saintgits01.footprint-ai.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
   warnings.warn(
-[WARN] Remote Collection Creation Failed ((503)
-Reason: Service Unavailable
-HTTP response headers: HTTPHeaderDict({'content-length': '19', 'content-type': 'text/plain', 'date': 'Tue, 20 Jan 2026 20:37:17 GMT', 'server': 'istio-envoy', 'connection': 'close'})
-HTTP response body: no healthy upstream
+/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'saintgits01.footprint-ai.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'storage.saintgits01.footprint-ai.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'storage.saintgits01.footprint-ai.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'saintgits01.footprint-ai.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'saintgits01.footprint-ai.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+args = Namespace(collection_id='crisis-mmd', restcol_host='https://saintgits01.footprint-ai.com/reststore', pkls=['fed_multimodal_restcol/preprocess/output/feature/img/custom_cnn/custom_aqi/alpha50/0.pkl', 'fed_multimodal_restcol/preprocess/output/feature/img/custom_cnn/custom_aqi/alpha50/dev.pkl', 'fed_multimodal_restcol/preprocess/output/feature/img/custom_cnn/custom_aqi/alpha50/test.pkl'], restcol_authtoken='eyJhbGciOiJSUzI1NiIsImtpZCI6ImM4MzExZmZmNWE3NjY5ZjRmOTNjMTMyODg3NmRkYTc3NjJmYTMyYjkifQ.eyJpc3MiOiJodHRwczovL2F1dGguc2FpbnRnaXRzMDEuZm9vdHByaW50LWFpLmNvbS9kZXgiLCJzdWIiOiJDaU5qYmoxa1pXMXZMRzkxUFZCbGIzQnNaU3hrWXoxbGVHRnRjR3hsTEdSalBXOXlaeElFYkdSaGNBIiwiYXVkIjoia2FmZWlkby1hcHAiLCJleHAiOjE3NjM2MTUzMjYsImlhdCI6MTc2MzUyODkyNiwiYXRfaGFzaCI6InB2Rmd5cEEtdHhiZzBLUVJ2eWh3WEEiLCJlbWFpbCI6ImRlbW9AZm9vdHByaW50LWFpLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJncm91cHMiOlsic3AxMCJdLCJuYW1lIjoiZGVtbyJ9.TgE5DE1Y8zUFgVXmX4vPiwH09Xl_RkAMPNtELm_Om1Jn_f3z5OWAfi7i4ELk3sMOFUEQ-ZvFkQR7N5IiQ9Q8zTydJYcMWYsmxirivbMPqEmNyYYLTjg-mbgqcYRgeLI40Tod90KEPu0X7F73Brrk_15EVovB1ZLuCXVdYoiaej0nJ2OmtxhLfXhzKzLIkbjEUTlkFp5yhaT02Xv4Ii1cy7_pPBCjm-DR986UFEBsvNxIX9187REVkNuw1vhpiBA4uOvHn9s0IcN4QGfmA2IScVy2HxAlwjuznF5avt5NUK-iDNBFLXg1kKViqw0-CgFkVU-jQbtryFnhhm2af_0ang', restcol_projectid='')
+config: <openapi_client.configuration.Configuration object at 0x7557618a2ce0>
+project_id: 
+create collection: crisis-mmd
+[WARN] Remote Collection Creation Failed ((404)
+Reason: Not Found
+HTTP response headers: HTTPHeaderDict({'date': 'Wed, 21 Jan 2026 11:25:36 GMT', 'server': 'istio-envoy', 'connection': 'close', 'content-length': '0'})
 ). Using Mock Collection ID.
 
 pkls=['fed_multimodal_restcol/preprocess/output/feature/img/custom_cnn/custom_aqi/alpha50/0.pkl', 'fed_multimodal_restcol/preprocess/output/feature/img/custom_cnn/custom_aqi/alpha50/dev.pkl', 'fed_multimodal_restcol/preprocess/output/feature/img/custom_cnn/custom_aqi/alpha50/test.pkl']
 key = 0.pkl
 key = dev.pkl
 key = test.pkl
-/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'storage.saintgits01.footprint-ai.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(
-/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'storage.saintgits01.footprint-ai.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(
-/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'saintgits01.footprint-ai.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(
-[WARN] Remote Write Failed ((503)
-Reason: Service Unavailable
-HTTP response headers: HTTPHeaderDict({'content-length': '19', 'content-type': 'text/plain', 'date': 'Tue, 20 Jan 2026 20:37:17 GMT', 'server': 'istio-envoy', 'connection': 'close'})
-HTTP response body: no healthy upstream
+[WARN] Remote Write Failed ((404)
+Reason: Not Found
+HTTP response headers: HTTPHeaderDict({'date': 'Wed, 21 Jan 2026 11:25:36 GMT', 'server': 'istio-envoy', 'connection': 'close', 'content-length': '0'})
 ). Falling back to Local Mock Storage.
-[SUCCESS] Saved to Local Mock Storage: /app/mock_storage/crisis-mmd/ece3a74b-5cd6-4fb6-b1cc-fb857ef08434.pkl
-docid: ece3a74b-5cd6-4fb6-b1cc-fb857ef08434
+[SUCCESS] Saved to Local Mock Storage: /app/mock_storage/crisis-mmd/5179120c-58f7-4a68-845c-63ba032767e1.pkl
+docid: 5179120c-58f7-4a68-845c-63ba032767e1
